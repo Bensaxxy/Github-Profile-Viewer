@@ -1,54 +1,131 @@
-# React + TypeScript + Vite
+# 🚀 GitHub Profile Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔍 An intuitive and modern React application built with TypeScript and Vite, allowing you to effortlessly explore GitHub profiles. Discover user details, repositories, and more! ✨
 
-Currently, two official plugins are available:
+## 🛠️ Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Get started with the GitHub Profile Viewer in just a few simple steps:
 
-## Expanding the ESLint configuration
+- ⬇️ **Clone the Repository:**
+  ```bash
+  git clone https://github.com/Bensaxxy/Github-Profile-Viewer.git
+  ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 📦 **Install Dependencies:**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+  ```bash
+  cd Github-Profile-Viewer
+  npm install
+  ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🚀 **Run the Application:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+  ```bash
+  npm run dev
+  ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+  Open your browser and navigate to `http://localhost:5173` to view the application.
+
+## 💻 Usage
+
+The GitHub Profile Viewer is designed to be intuitive and user-friendly. Here's a quick guide on how to use it:
+
+1.  **Enter a GitHub username** in the search bar.
+2.  **Click the "Search" button** to fetch the user's profile and repositories.
+3.  **View the user's profile** information, including avatar, bio, followers, and more.
+4.  **Browse the user's repositories**, sort them by stars, name, or updated date, and filter by language.
+5.  **Use the theme toggle** to switch between light and dark mode for a comfortable viewing experience.
+6.  **Access the search history** to quickly revisit previously searched profiles.
+
+<details>
+<summary>Detailed Usage Instructions</summary>
+
+1.  **Searching for a User:**
+    - Type the GitHub username into the search bar and press "Search." The app will fetch and display the user's profile information and repositories.
+        ```tsx
+        <SearchBar onSearch={handleSearch} loading={loading} />
+        ```
+    - If the user is not found, an error message will be displayed.
+2.  **Viewing User Profile:**
+    - The user's profile section displays key information such as their avatar, username, bio, follower counts, and a link to their GitHub profile.
+        ```tsx
+        <UserProfile userData={userData} darkMode={darkMode} />
+        ```
+3.  **Browsing Repositories:**
+    - The repositories section lists the user's public repositories.
+    - You can sort the repositories by the number of stars, name, or last updated date.
+    - You can also filter the repositories by programming language.
+        ```tsx
+        <Repositories
+            repos={filteredRepos}
+            languages={languages}
+            sortOption={sortOption}
+            languageFilter={languageFilter}
+            onSortChange={setSortOption}
+            onLanguageFilterChange={setLanguageFilter}
+            darkMode={darkMode}
+        />
+        ```
+4.  **Using Search History:**
+    - The search history displays the last 5 searched usernames.
+    - Click on a username in the search history to quickly load that user's profile.
+    - You can remove usernames from the search history individually.
+        ```tsx
+        <SearchHistory
+            history={searchHistory}
+            onHistoryClick={handleHistoryClick}
+            darkMode={darkMode}
+            onRemoveHistory={handleRemoveHistory}
+        />
+        ```
+5.  **Toggling Dark Mode:**
+    - Use the theme toggle button in the top right corner to switch between light and dark mode.
+    ```tsx
+    <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    ```
+</details>
+
+## ✨ Features
+
+- 🚀 **Effortless Search**: Quickly find GitHub profiles using the search bar.
+- 👤 **Comprehensive Profile View**: Display user avatars, bios, and key statistics.
+- 📚 **Repository Browser**: Sort and filter repositories by stars, name, and language.
+- 🌙 **Theme Toggle**: Switch between light and dark mode for optimal viewing.
+-  **Search History**: Quickly access previously searched profiles.
+- 🎨 **Modern UI**: Enjoy a clean and intuitive user interface.
+
+## 🛠️ Technologies Used
+
+| Technology   | Link                                       |
+| :----------- | :----------------------------------------- |
+| React        | [https://react.dev/](https://react.dev/)       |
+| TypeScript   | [https://www.typescriptlang.org/](https://www.typescriptlang.org/) |
+| Vite         | [https://vitejs.dev/](https://vitejs.dev/)       |
+| Tailwind CSS | [https://tailwindcss.com/](https://tailwindcss.com/) |
+| Axios        | [https://axios-http.com/](https://axios-http.com/)   |
+| ESLint       | [https://eslint.org/](https://eslint.org/)     |
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can contribute:
+
+- 🐛 Report bugs and suggest enhancements.
+- 🛠️ Submit pull requests with bug fixes or new features.
+- 📝 Improve documentation.
+
+Please follow these guidelines when contributing:
+
+- 📌 Ensure your code adheres to the project's coding standards.
+- 🧪 Write clear and concise commit messages.
+- ✅ Test your changes thoroughly.
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 👨‍💻 Author Info
+
+- **Bensaoud Ahmed-Salem**
+  - GitHub: [Bensaxxy](https://github.com/Bensaxxy)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Built%20with-Dokugen-brightgreen)](https://github.com/samueltuoyo15/Dokugen)
